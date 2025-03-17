@@ -60,6 +60,21 @@ https://platform.openai.com/docs/guides/rate-limits/usage-tiers
 2. 課金などにより Tier を上げる
    - Tier 2 で RateLimitError が発生しないことを確認済みです (2024 年 10 月 31 日時点)
 
+#### 2025/3/15 追記
+
+LangChain のドキュメントの増加により、gpt-4o-mini を使用しても Tier 1 ではエラーが発生することが報告されています。
+
+その場合、GitHub からドキュメントをロードする箇所で、以下のように `langchain==0.2.13` という動作確認済みのバージョンを指定するようにしてください。
+
+```python
+loader = GitLoader(
+    clone_url="https://github.com/langchain-ai/langchain",
+    repo_path="./langchain",
+    branch="langchain==0.2.13",
+    file_filter=file_filter,
+)
+```
+
 ## 書籍の誤り・エラーについて
 
 書籍の誤り（誤字など）や、発生したエラーについては、GitHub の Issue からご連絡ください。
